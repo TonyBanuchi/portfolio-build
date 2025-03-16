@@ -8,12 +8,7 @@ import nodeLogo from "../../assets/jsIconGreen.svg";
 import sassLogo from "../../assets/sass-logo.png";
 import tsLogo from "../../assets/ts-logo-512.svg";
 
-// Icon Imports
-import { FaMobileRetro } from "react-icons/fa6";
-import { FaAt } from "react-icons/fa6";
-import { FaGithub } from "react-icons/fa6";
-import { FaLinkedin } from "react-icons/fa6";
-import { FaFreeCodeCamp } from "react-icons/fa6";
+
 
 // Style Imports
 import "./Home.scss";
@@ -100,51 +95,6 @@ function Home() {
       <div className="highlighted-project" >
         <DropGame />
       </div>
-      <br />
-      <h3>Do you need an experienced Software Engineer, capable of adapting to solving the most complex problems?</h3>
-      <h3>I can help your organization succeed! Contact me to find out how.</h3>
-      <section id="profiles">
-        <a
-          href="https://www.freecodecamp.org/TonyBanuchiDev"
-          id="profile-link"
-          className="profile-link-item"
-          target="_blank"
-        >
-          <FaFreeCodeCamp /> freeCodeCamp
-        </a>
-        <a
-          href="https://www.linkedin.com/in/tony-banuchi-developer/"
-          id="linkedin-link"
-          className="profile-link-item"
-          target="_blank"
-        >
-          <FaLinkedin /> LinkedIn
-        </a>
-        <a
-          href="https://github.com/TonyBanuchi"
-          id="github-link"
-          className="profile-link-item"
-          target="_blank"
-        >
-          <FaGithub /> GitHub
-        </a>
-        <a
-          href="mailto:tony.banuchi@gmail.com"
-          id="email-link"
-          className="profile-link-item"
-          target="_blank"
-        >
-          <FaAt /> Send an Email
-        </a>
-        <a
-          href="tel:555-555-5555"
-          id="call-link"
-          className="profile-link-item"
-          target="_blank"
-        >
-          <FaMobileRetro /> Call Me
-        </a>
-      </section>
     </>
   );
 }

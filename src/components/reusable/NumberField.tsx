@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { NumberField } from '@base-ui-components/react/number-field';
-import styles from './index.module.css';
+import styles from './NumberField.module.scss';
 
 type CustomNumberFieldProps = {
   label: string;
