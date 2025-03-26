@@ -2,20 +2,20 @@
 import { TiWarning } from "react-icons/ti";
 
 // Style Imports
-import './UnderConstruction.scss'
+import styles from './UnderConstruction.module.scss'
 
 function UnderConstruction(){
   return(
     <>
-    <div className="main">
-    <div className="sign">
+    <div className={styles.main}>
+    <div className={styles.sign}>
     <TiWarning />
     </div>
-    <div className="message">
+    <div className={styles.message}>
     <h2> Under Construction </h2>
     <h3> Please check back soon.</h3>
     </div>
-    <div className="sign">
+    <div className={styles.sign}>
     <TiWarning />
     </div>
     </div>

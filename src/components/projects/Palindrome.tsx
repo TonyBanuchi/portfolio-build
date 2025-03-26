@@ -1,6 +1,6 @@
 // Style Imports
 import UnderConstruction from '../under-construction/UnderConstruction'
-import './DropGame.scss'
+import styles from './.module.scss'
 
 function PalindromeChecker(){
   return(

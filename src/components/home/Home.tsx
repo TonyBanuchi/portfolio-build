@@ -11,7 +11,7 @@ import tsLogo from "../../assets/ts-logo-512.svg";
 
 
 // Style Imports
-import "./Home.scss";
+import styles from './Home.module.scss';
 
 // Componenet Imports
 import DropGame from "../projects/DropGame";
@@ -19,7 +19,8 @@ import DropGame from "../projects/DropGame";
 function Home() {
   return (
     <>
-      <div>
+    <div className={styles["home-content"]}>
+      <div className={styles["tech-icons"]}>
         <a
           href="https://vite.dev"
           target="_blank"
@@ -28,7 +29,7 @@ function Home() {
           data-tooltip-delay-hide={100}
           data-tooltip-place="bottom"
         >
-          <img src={viteLogo} className="logo" alt="Vite logo" />
+          <img src={viteLogo} className={styles.logo} alt="Vite logo" />
         </a>
         <Tooltip id="tt-vite-logo" />
         <a
@@ -39,7 +40,7 @@ function Home() {
           data-tooltip-delay-hide={100}
           data-tooltip-place="bottom"
         >
-          <img src={reactLogo} className="logo react" alt="React logo" />
+          <img src={reactLogo} className={`${styles.logo} ${styles.react}`} alt="React logo" />
         </a>
         <Tooltip id="tt-react-logo" />
         <a
@@ -50,7 +51,7 @@ function Home() {
           data-tooltip-delay-hide={100}
           data-tooltip-place="bottom"
         >
-          <img src={nodeLogo} className="logo node" alt="Node logo" />
+          <img src={nodeLogo} className={`${styles.logo} ${styles.node}`} alt="Node logo" />
         </a>
         <Tooltip id="tt-node-logo" />
         <a
@@ -61,7 +62,7 @@ function Home() {
           data-tooltip-delay-hide={100}
           data-tooltip-place="bottom"
         >
-          <img src={tsLogo} className="logo typescript" alt="TypeScript logo" />
+          <img src={tsLogo} className={`${styles.logo} ${styles.typescript}`} alt="TypeScript logo" />
         </a>
         <Tooltip id="tt-typescript-logo" />
         <a
@@ -72,14 +73,14 @@ function Home() {
           data-tooltip-delay-hide={100}
           data-tooltip-place="bottom"
         >
-          <img src={sassLogo} className="logo sass" alt="Sass logo" />
+          <img src={sassLogo} className={`${styles.logo} ${styles.ssas}`} alt="Sass logo" />
         </a>
         <Tooltip id="tt-sass-logo" />
       </div>
       <br />
       <h1>Tony Banuchi</h1>
       <h2>Full-Stack Software Engineer</h2>
-      <div className="card">
+      <div className={styles.card}>
         <p>
           Highly adaptable Full-Stack Software Engineer with expertise in
           designing and deploying scalable, high-performance web applications.
@@ -92,10 +93,10 @@ function Home() {
           improvements.
         </p>
       </div>
-      <div className="highlighted-project" >
+      <div className={styles["highlighted-project"]} >
         <DropGame />
       </div>
-    </>
+      </div>    </>
   );
 }
 

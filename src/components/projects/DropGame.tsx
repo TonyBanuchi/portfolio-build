@@ -1,6 +1,6 @@
 // Style Imports
 import UnderConstruction from '../under-construction/UnderConstruction'
-import './DropGame.scss'
+import styles from './DropGame.module.scss'
 
 function DropGame(){
   return(
