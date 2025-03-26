@@ -32,7 +32,7 @@ function App() {
       <Route path="projects" element={<Projects />} />
       </Routes>
       </main>
-      <footer>
+      <footer className="soft-padding">
       <h3 className={`${styles['foot-text']}`}>
         Do you need an experienced Software Engineer, capable of adapting to solving the most complex problems? 
         <br />
