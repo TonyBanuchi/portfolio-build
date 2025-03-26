@@ -24,7 +24,7 @@ function App() {
       <div className="flex flex-row">
       <NavBar />
       </div>
-      <main className="flex flex-col">
+      <main className={`${styles.main} flex flex-col`}>
       <Routes>
       <Route path="/" element={<Home />} />
       <Route path="cash" element={<CashRegister />} />
@@ -33,17 +33,12 @@ function App() {
       </Routes>
       </main>
       <footer>
-      <h3>Do you need an experienced Software Engineer, capable of adapting to solving the most complex problems?</h3>
-      <h3>I can help your organization succeed! Contact me to find out how.</h3>
+      <h3 className={`${styles['foot-text']}`}>
+        Do you need an experienced Software Engineer, capable of adapting to solving the most complex problems? 
+        <br />
+        I can help your organization succeed! Contact me to find out how.
+      </h3>
       <section className={styles.profiles}>
-        <a
-          href="https://www.freecodecamp.org/TonyBanuchiDev"
-          id="profile-link"
-          className={`${styles['profile-link-item']}`}
-          target="_blank"
-        >
-          <FaFreeCodeCamp /> freeCodeCamp
-        </a>
         <a
           href="https://www.linkedin.com/in/tony-banuchi-developer/"
           id="linkedin-link"
@@ -59,6 +54,14 @@ function App() {
           target="_blank"
         >
           <FaGithub /> GitHub
+        </a>
+        <a
+          href="https://www.freecodecamp.org/TonyBanuchiDev"
+          id="profile-link"
+          className={`${styles['profile-link-item']}`}
+          target="_blank"
+        >
+          <FaFreeCodeCamp /> freeCodeCamp
         </a>
         <a
           href="mailto:tony.banuchi@gmail.com"
