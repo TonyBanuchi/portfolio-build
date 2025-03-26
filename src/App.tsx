@@ -6,7 +6,7 @@ import Home from "./components/home/Home";
 import CashRegister from "./components/projects/cashRegister/CashRegister";
 import Projects from "./components/projects-page/Projects";
 import DropGame from "./components/projects/DropGame";
-import NavBar from "./components/navbar/NavBar";
+import NavBar from "./components/home/NavBar";
 
 // Icon Imports
 import { FaMobileRetro } from "react-icons/fa6";
