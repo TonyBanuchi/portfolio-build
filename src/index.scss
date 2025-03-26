@@ -1,3 +1,7 @@
+$active-color: #06b61edc;
+$navlink-color: #2b2b2b;
+$navlink-text-color: #7b6dff;
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -67,6 +71,13 @@ button:focus-visible {
   }
 }
 
+// Navbar Active style move due to module conflict with active property
+nav a.active {
+  color: $active-color;
+  font-weight: bold;
+  box-shadow: none;
+  border: 1px solid $active-color;
+}
 
 .flex {
   display: flex;

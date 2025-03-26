@@ -19,7 +19,7 @@ import DropGame from "../projects/DropGame";
 function Home() {
   return (
     <>
-    <div className={styles["home-content"]}>
+    <div className={`${styles["home-content"]} flex flex-col`}>
       <div className={styles["tech-icons"]}>
         <a
           href="https://vite.dev"

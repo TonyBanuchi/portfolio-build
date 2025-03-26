@@ -1,6 +1,4 @@
-$active-color: #06b61edc;
-$navlink-color: #2b2b2b;
-$navlink-text-color: #7b6dff;
+@use '../../index.scss';
 
 .navbar {
 
@@ -10,7 +8,8 @@ $navlink-text-color: #7b6dff;
   justify-content: space-evenly;
   padding: 1rem;
   background-color: #161616;
-  position: fixed;
+  //position: fixed;
+  width: 100%;
   top: 0px;
   left: 0px;
   right: 0px;
@@ -21,15 +20,15 @@ $navlink-text-color: #7b6dff;
     align-self: center;
     padding: 10px;
     font-size: 1.25em;
-    color: $navlink-text-color;
+    color: index.$navlink-text-color;
   }
 }
 
 .nav-link {
-  background-color: $navlink-color;
+  background-color: index.$navlink-color;
   border-radius: 15px 15px;
   box-shadow: 1px 6px;
-  border: 1px solid $navlink-text-color;
+  border: 1px solid index.$navlink-text-color;
 }
 
 .nav-link:hover {
@@ -37,9 +36,11 @@ $navlink-text-color: #7b6dff;
   color: #000000;
 }
 
+/* moving to global styles because module change stopped it from applying
 a.active {
   color: $active-color;
   font-weight: bold;
   box-shadow: none;
   border: 1px solid $active-color;
 }
+  */
