@@ -77,7 +77,7 @@ function App() {
           <FaMobileRetro /> Call Me
         </a>
       </section>
-
+        <p className="licensing">&copy; 2025 Tony Banuchi. All Rights Reserved.</p>
       </footer>
     </>
   );

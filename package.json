@@ -1,7 +1,7 @@
 {
   "name": "portfolio-build",
   "description": "Professional Portfolio Build Project. To be built and hosted on Git pages.",
-  "license": "GPL-3.0-only",
+  "license": "UNLICENSED",
   "private": true,
   "version": "0.0.0",
   "type": "module",
