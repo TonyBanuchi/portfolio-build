@@ -14,7 +14,7 @@ import tsLogo from "../../assets/ts-logo-512.svg";
 import styles from './Home.module.scss';
 
 // Componenet Imports
-import DropGame from "../projects/DropGame";
+import DropGame from "../projects/dropGame/DropGame";
 
 function Home() {
   return (

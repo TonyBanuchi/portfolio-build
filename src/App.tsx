@@ -4,8 +4,8 @@ import { Route, Routes } from "react-router-dom";
 // Componenet Imports
 import Home from "./components/home/Home";
 import CashRegister from "./components/projects/cashRegister/CashRegister";
-import Projects from "./components/projects-page/Projects";
-import DropGame from "./components/projects/DropGame";
+import Projects from "./components/projects/projects-page/Projects";
+import DropGame from "./components/projects/dropGame/DropGame";
 import NavBar from "./components/navbar/NavBar";
 
 // Icon Imports
