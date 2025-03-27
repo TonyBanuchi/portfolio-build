@@ -1,8 +1,18 @@
+// REACT Imports
 import React, { useState } from 'react';
-import CustomNumberField from '../../reusable/NumberField';
-import cashRegisterNumberFormat from '../../../types/constants/cashRegisterNumberFormat.const';
-import { Button } from '@mui/material';
+
+// Logic imports
 import { Observable } from 'rxjs';
+
+// Component Imports
+import CustomNumberField from '../../reusable/NumberField';
+import { Button } from '@mui/material';
+
+// type imports
+import cashRegisterNumberFormat from '../../../types/constants/cashRegisterNumberFormat.const';
+
+// Style Imports
+import styles from './ItemsList.module.scss';
 
 export interface ICashCounterProps {
   sendTotal: (total: number) => void;
@@ -46,7 +56,7 @@ export function ItemsList(props: ICashCounterProps) {
 
   return (
     <>
-      <div id="purchase-container" className="register">
+      <div id="purchase-container" className={styles.register}>
         <div className="items-list">
           <ul>
             {items.map((item) => (

@@ -1,9 +1,20 @@
+// REACT Imports
 import React, { useState } from 'react';
-import { MoneyBreakdown } from '../../../types/classes/MoneyBreakdown.class';
-import { Button } from '@mui/material';
-import cashRegisterNumberFormat from '../../../types/constants/cashRegisterNumberFormat.const';
-import CustomNumberField from '../../reusable/NumberField';
+
+// logic imports
 import { Observable } from 'rxjs';
+
+// type imports
+import { MoneyBreakdown } from '../../../types/classes/MoneyBreakdown.class';
+import cashRegisterNumberFormat from '../../../types/constants/cashRegisterNumberFormat.const';
+
+// component imports
+import CustomNumberField from '../../reusable/NumberField';
+import { Button } from '@mui/material';
+
+//style imports
+import styles from './CashCounter.module.scss';
+import featureStyles from './CashRegister.module.scss';
 
 export interface ICashCounterProps {
   sendCashCount: (newCashCount: MoneyBreakdown) => void;
@@ -107,7 +118,7 @@ export function CashCounter(props: ICashCounterProps) {
 
   return (
     <>
-      <div id="cash-input" className="purchase-controls">
+      <div className={`${styles['cash-input']} ${featureStyles['purchase-controls']}`}>
 
       <CustomNumberField
           label={"Pennies"}

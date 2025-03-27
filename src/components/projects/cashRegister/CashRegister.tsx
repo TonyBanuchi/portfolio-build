@@ -1,19 +1,21 @@
 // React Imports
 import { useState } from "react";
 
-// Icon Imports
-//import { MoneyBreakdown } from "../../types/classes/MoneyBreakdown.class";
-//import { MoneyUnit } from "../../types/classes/MoneyUnit.class";
+// logic imports
+import { BehaviorSubject } from "rxjs";
 
-// Style Imports
-import "./CashRegister.scss";
+// componenet imports
 import { Button } from "@mui/material";
+import { ItemsList } from "./ItemsList";
+import { CashCounter } from "./CashCounter";
+
+// type imports
 import { MoneyBreakdown } from "../../../types/classes/MoneyBreakdown.class";
 import { eCashRegisterStatusMessages } from "../../../types/enums/cashRegisterStatusMessages.enum";
 import CalculateChangeResponse from "../../../types/classes/CalculateChangeResponse";
-import { BehaviorSubject } from "rxjs";
-import { ItemsList } from "./ItemsList";
-import { CashCounter } from "./CashCounter";
+
+// Style Imports
+import styles from "./CashRegister.module.scss";
 
 export default function CashRegister() {
   // Establish State variables
@@ -219,23 +221,23 @@ export default function CashRegister() {
 
   return (
     <>
-      <main className="content-container">
-        <div className="title-container">
-          <h1 className="title">Cash Register Calculator</h1>
+      <div className={`${styles['content-container']} flex flex-col soft-padding`}>
+        <div className={`${styles['title-container']}`}>
+          <h1 className={styles.title}>Cash Register Calculator</h1>
         </div>
-        <div id="purchase-container" className="register">
+        <div id="purchase-container" className={styles.register}>
           <ItemsList sendTotal={setPriceValue} resetTrigger={clearTrigger} />
-          <div id="price-display" className="purchase-controls">
+          <div id="price-display" className={`${styles['purchase-controls']}`}>
             <p id="price-symbol">
               Price: $<span id="price-value">{priceValue}</span>
             </p>
           </div>
-          <div id="amtPaid-display" className="purchase-controls">
+          <div id="amtPaid-display" className={`${styles['purchase-controls']}`}>
             <p id="amtPaid-symbol">
               Amount Paid: $<span id="amtPaid-value">{amountPaid}</span>
             </p>
           </div>
-          <div id="cash-input" className="purchase-controls">
+          <div id="cash-input" className={`${styles['purchase-controls']}`}>
             <CashCounter
               sendCashCount={setMoneyIn}
               sendTotal={setAmountPaid}
@@ -256,10 +258,10 @@ export default function CashRegister() {
             </Button>
           </div>
         </div>
-        <div id="change-due" className="register">
+        <div id="change-due" className={styles.register}>
           {changeTotal}
         </div>
-        <div className="money-breakdown">
+        <div className={`${styles['money-breakdown']}`}>
           <table>
             <thead>
               <tr>
@@ -288,7 +290,7 @@ export default function CashRegister() {
             </tfoot>
           </table>
         </div>
-      </main>
+      </div>
     </>
   );
 }
