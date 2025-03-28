@@ -2,11 +2,14 @@
 import { Tooltip } from "react-tooltip";
 
 // Logo Imports
+import angularLogo from "../../assets/angular_gradient.png";
 import reactLogo from "../../assets/react.svg";
 import viteLogo from "../../assets/vite.svg";
 import nodeLogo from "../../assets/jsIconGreen.svg";
 import sassLogo from "../../assets/sass-logo.png";
 import tsLogo from "../../assets/ts-logo-512.svg";
+import cSharpLogo from "../../assets/csharpIcon.png";
+import html5Logo from "../../assets/HTML5_Badge.svg";
 
 // Style Imports
 import styles from "./Home.module.scss";
@@ -30,6 +33,21 @@ function Home() {
             <img src={viteLogo} className={styles.logo} alt="Vite logo" />
           </a>
           <Tooltip id="tt-vite-logo" />
+          <a
+            href="https://angular.dev/"
+            target="_blank"
+            data-tooltip-id="tt-angular-logo"
+            data-tooltip-content="Angular"
+            data-tooltip-delay-hide={100}
+            data-tooltip-place="bottom"
+          >
+            <img
+              src={angularLogo}
+              className={`${styles.logo} ${styles.angular}`}
+              alt="Angular logo"
+            />
+          </a>
+          <Tooltip id="tt-angular-logo" />
           <a
             href="https://react.dev"
             target="_blank"
@@ -76,6 +94,21 @@ function Home() {
           </a>
           <Tooltip id="tt-typescript-logo" />
           <a
+            href="https://learn.microsoft.com/en-us/dotnet/csharp/"
+            target="_blank"
+            data-tooltip-id="tt-cSharp-logo"
+            data-tooltip-content="C#"
+            data-tooltip-delay-hide={100}
+            data-tooltip-place="bottom"
+          >
+            <img
+              src={cSharpLogo}
+              className={`${styles.logo} ${styles['c-sharp']}`}
+              alt="C-Sharp logo"
+            />
+          </a>
+          <Tooltip id="tt-cSharp-logo" />
+          <a
             href="https://sass-lang.com/"
             target="_blank"
             data-tooltip-id="tt-sass-logo"
@@ -90,6 +123,21 @@ function Home() {
             />
           </a>
           <Tooltip id="tt-sass-logo" />
+          <a
+            href="https://html5.org/"
+            target="_blank"
+            data-tooltip-id="tt-html5-logo"
+            data-tooltip-content="HTML 5"
+            data-tooltip-delay-hide={100}
+            data-tooltip-place="bottom"
+          >
+            <img
+              src={html5Logo}
+              className={`${styles.logo} ${styles.html5}`}
+              alt="HTML 5 logo"
+            />
+          </a>
+          <Tooltip id="tt-html5-logo" />
         </div>
         <br />
         <h1>Tony Banuchi</h1>

@@ -220,7 +220,7 @@ export default function CashRegister() {
     }
   };
 
-  if (true){return (<><UnderConstruction /></>)}
+//  if (true){return (<><UnderConstruction /></>)}
   return (
     <>
       <div className={`${styles['content-container']} flex flex-col`}>
