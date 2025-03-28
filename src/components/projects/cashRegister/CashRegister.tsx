@@ -16,6 +16,7 @@ import CalculateChangeResponse from "../../../types/classes/CalculateChangeRespo
 
 // Style Imports
 import styles from "./CashRegister.module.scss";
+import UnderConstruction from "../../under-construction/UnderConstruction";
 
 export default function CashRegister() {
   // Establish State variables
@@ -219,6 +220,7 @@ export default function CashRegister() {
     }
   };
 
+  if (false){return (<><UnderConstruction /></>)}
   return (
     <>
       <div className={`${styles['content-container']} flex flex-col soft-padding`}>
