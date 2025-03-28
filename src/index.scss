@@ -3,11 +3,16 @@ $navlink-color: #111111;
 $navlink-text-color: #7b6dff;
 $solid-dark-bg-color: #161616;
 
-:root {
+#root {
   width: 100%;
   min-width: 400px;
   height: 100%;
-  min-height: 600px;
+  min-height: 100vh;
+
+  flex-grow: 1;
+}
+
+:root {
 
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

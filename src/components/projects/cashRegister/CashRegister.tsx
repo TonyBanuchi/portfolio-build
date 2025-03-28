@@ -220,10 +220,10 @@ export default function CashRegister() {
     }
   };
 
-  if (false){return (<><UnderConstruction /></>)}
+  if (true){return (<><UnderConstruction /></>)}
   return (
     <>
-      <div className={`${styles['content-container']} flex flex-col soft-padding`}>
+      <div className={`${styles['content-container']} flex flex-col`}>
         <div className={`${styles['title-container']}`}>
           <h1 className={styles.title}>Cash Register Calculator</h1>
         </div>

@@ -5,7 +5,7 @@ import styles from "./DropGame.module.scss";
 function DropGame() {
   return (
     <>
-      <div className="flex flex-col"><div className="title">
+      <div className="flex flex-col full-page"><div className="title">
         <h1 className={styles.title}>Drop Game</h1>
       </div>
       <div className="content">
