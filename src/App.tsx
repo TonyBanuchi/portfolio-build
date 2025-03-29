@@ -80,6 +80,7 @@ function App() {
           <FaMobileRetro /> Call Me
         </a>
       </section>
+      <a target="_blank" href="https://icons8.com/icon/laYYF3dV0Iew/microsoft-sql-server">sql server</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
         <p className="licensing">&copy; 2025 Tony Banuchi. All Rights Reserved.</p>
       </footer>
     </>
