@@ -2,11 +2,10 @@
 import React, { useState } from "react";
 
 // Component Imports
-import CustomNumberField from "../../reusable/NumberField";
+import CustomNumberField from "../../reusable/UsCurrNumberField";
 import { Button } from "@mui/material";
 
 // type imports
-import cashRegisterNumberFormat from "../../../types/constants/cashRegisterNumberFormat.const";
 
 // Style Imports
 import styles from "./KeyPad.module.scss";
@@ -74,7 +73,6 @@ export function KeyPad(props: IKeyPadProps) {
             step={0.01}
             smallStep={0.1}
             largeStep={1}
-            format={cashRegisterNumberFormat}
             clearTrigger={clearTrigger}
           />
         </div>

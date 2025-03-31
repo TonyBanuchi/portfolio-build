@@ -2,6 +2,7 @@ import * as React from "react";
 import { NumberField } from "@base-ui-components/react/number-field";
 import styles from "./NumberField.module.scss";
 import { Observable } from "rxjs";
+import cashRegisterNumberFormat from "../../types/constants/cashRegisterNumberFormat.const";
 
 type CustomNumberFieldProps = {
   label: string;
@@ -11,7 +12,6 @@ type CustomNumberFieldProps = {
   step: number;
   smallStep: number;
   largeStep: number;
-  format: Intl.NumberFormatOptions;
   clearTrigger: Observable<boolean>;
 };
 
@@ -46,11 +46,11 @@ export default function CustomNumberField(props: CustomNumberFieldProps) {
       step={props.step}
       smallStep={props.smallStep}
       largeStep={props.largeStep}
-      format={props.format}
+      format={cashRegisterNumberFormat}
       value={value}
     >
       <NumberField.ScrubArea className={styles.ScrubArea}>
-        <label htmlFor={props.fieldId} className={styles.Label}>
+      <label htmlFor={props.fieldId} className={styles.Label}>
           {props.label}
         </label>
         <NumberField.ScrubAreaCursor className={styles.ScrubAreaCursor}>

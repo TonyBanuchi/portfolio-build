@@ -6,15 +6,15 @@ import { Observable } from "rxjs";
 
 // type imports
 import { MoneyBreakdown } from "../../../types/classes/MoneyBreakdown.class";
-import cashRegisterNumberFormat from "../../../types/constants/cashRegisterNumberFormat.const";
 
 // component imports
-import CustomNumberField from "../../reusable/NumberField";
+import CustomNumberField from "../../reusable/UsCurrNumberField";
 import { Button } from "@mui/material";
 
 //style imports
 import styles from "./CashCounter.module.scss";
 import featureStyles from "./CashRegister.module.scss";
+import standardWholeNumberFormat from "../../../types/constants/standardWholeNumberFormat.const";
 
 export interface ICashCounterProps {
   sendCashCount: (newCashCount: MoneyBreakdown) => void;
@@ -190,7 +190,7 @@ export function CashCounter(props: ICashCounterProps) {
               step={1}
               smallStep={1}
               largeStep={10}
-              format={cashRegisterNumberFormat}
+              format={standardWholeNumberFormat}
             />
             <CustomNumberField
               label={"Nickels"}
@@ -200,7 +200,7 @@ export function CashCounter(props: ICashCounterProps) {
               step={1}
               smallStep={1}
               largeStep={10}
-              format={cashRegisterNumberFormat}
+              format={standardWholeNumberFormat}
             />
           </div>
           <div className={styles["coin-col-two"]}>
@@ -212,7 +212,7 @@ export function CashCounter(props: ICashCounterProps) {
               step={1}
               smallStep={1}
               largeStep={10}
-              format={cashRegisterNumberFormat}
+              format={standardWholeNumberFormat}
             />
             <CustomNumberField
               label={"Quarters"}
@@ -222,7 +222,7 @@ export function CashCounter(props: ICashCounterProps) {
               step={1}
               smallStep={1}
               largeStep={10}
-              format={cashRegisterNumberFormat}
+              format={standardWholeNumberFormat}
             />
           </div>
         </div>
@@ -236,7 +236,7 @@ export function CashCounter(props: ICashCounterProps) {
               step={1}
               smallStep={1}
               largeStep={10}
-              format={cashRegisterNumberFormat}
+              format={standardWholeNumberFormat}
             />
             <CustomNumberField
               label={"Fives"}
@@ -246,7 +246,7 @@ export function CashCounter(props: ICashCounterProps) {
               step={1}
               smallStep={1}
               largeStep={10}
-              format={cashRegisterNumberFormat}
+              format={standardWholeNumberFormat}
             />
             <CustomNumberField
               label={"Tens"}
@@ -256,7 +256,7 @@ export function CashCounter(props: ICashCounterProps) {
               step={1}
               smallStep={1}
               largeStep={10}
-              format={cashRegisterNumberFormat}
+              format={standardWholeNumberFormat}
             />
           </div>
           <div className={styles["bill-col-two"]}>
@@ -268,7 +268,7 @@ export function CashCounter(props: ICashCounterProps) {
               step={1}
               smallStep={1}
               largeStep={10}
-              format={cashRegisterNumberFormat}
+              format={standardWholeNumberFormat}
             />
             <CustomNumberField
               label={"Fifties"}
@@ -278,7 +278,7 @@ export function CashCounter(props: ICashCounterProps) {
               step={1}
               smallStep={1}
               largeStep={10}
-              format={cashRegisterNumberFormat}
+              format={standardWholeNumberFormat}
             />
             <CustomNumberField
               label={"One Hundreds"}
@@ -288,7 +288,7 @@ export function CashCounter(props: ICashCounterProps) {
               step={1}
               smallStep={1}
               largeStep={10}
-              format={cashRegisterNumberFormat}
+              format={standardWholeNumberFormat}
             />
           </div>
         </div>
