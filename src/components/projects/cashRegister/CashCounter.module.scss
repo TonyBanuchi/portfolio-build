@@ -11,3 +11,24 @@
 #cash-drawer, #change-due {
   font-weight: bold;
 }
+
+.coins, 
+.bills, 
+.coin-col-one, 
+.coin-col-two, 
+.bill-col-one, 
+.bill-col-two {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.coins, .bills {
+  flex-direction: row;
+}
+
+.coin-col-one, 
+.coin-col-two, 
+.bill-col-one, 
+.bill-col-two {
+  flex-direction: column;
+}

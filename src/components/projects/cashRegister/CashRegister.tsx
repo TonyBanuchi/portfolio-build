@@ -19,6 +19,9 @@ import styles from "./CashRegister.module.scss";
 import UnderConstruction from "../../under-construction/UnderConstruction";
 
 export default function CashRegister() {
+  // DEVELOPMENT SWITCH to show Under Construction
+  const ready = true;
+
   // Establish State variables
   const [cashDrawer, setCashDrawer] = useState<MoneyBreakdown>(
     new MoneyBreakdown()
@@ -220,7 +223,7 @@ export default function CashRegister() {
     }
   };
 
-  if (true){return (<><UnderConstruction /></>)}
+  if (!ready){return (<><UnderConstruction /></>)}
   return (
     <>
       <div className={`${styles['content-container']} flex flex-col`}>

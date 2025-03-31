@@ -1,31 +1,54 @@
-import * as React from 'react';
-import { NumberField } from '@base-ui-components/react/number-field';
-import styles from './NumberField.module.scss';
+import * as React from "react";
+import { NumberField } from "@base-ui-components/react/number-field";
+import styles from "./NumberField.module.scss";
+import { Observable } from "rxjs";
 
 type CustomNumberFieldProps = {
   label: string;
   name: string;
   fieldId: string;
-  changeHandler: (value: number | null, event: Event | undefined) => void;
+  changeHandler: (value: number) => void;
   step: number;
   smallStep: number;
   largeStep: number;
   format: Intl.NumberFormatOptions;
-}
+  clearTrigger: Observable<boolean>;
+};
 
 export default function CustomNumberField(props: CustomNumberFieldProps) {
+  const [value, setValue] = React.useState(0);
+
+  let clearState = false;
+  props.clearTrigger.subscribe((x: boolean) => {
+    if (clearState !== x) {
+      clearState = x;
+      setValue(0);
+    }
+  });
+
+  function onChangeHandler(
+    value: number | null,
+    event: Event | undefined
+  ): void {
+    if (value && event) {
+      setValue(value);
+      props.changeHandler(value);
+    }
+    return;
+  }
+
   return (
-    <NumberField.Root 
-      id={props.fieldId} 
-      defaultValue={0} 
-      className={styles.Field} 
-      onValueChange={props.changeHandler}
+    <NumberField.Root
+      id={props.fieldId}
+      defaultValue={0}
+      className={styles.Field}
+      onValueChange={onChangeHandler}
       step={props.step}
       smallStep={props.smallStep}
       largeStep={props.largeStep}
       format={props.format}
+      value={value}
     >
-      
       <NumberField.ScrubArea className={styles.ScrubArea}>
         <label htmlFor={props.fieldId} className={styles.Label}>
           {props.label}
@@ -48,7 +71,7 @@ export default function CustomNumberField(props: CustomNumberFieldProps) {
   );
 }
 
-function CursorGrowIcon(props: React.ComponentProps<'svg'>) {
+function CursorGrowIcon(props: React.ComponentProps<"svg">) {
   return (
     <svg
       width="26"
@@ -64,7 +87,7 @@ function CursorGrowIcon(props: React.ComponentProps<'svg'>) {
   );
 }
 
-function PlusIcon(props: React.ComponentProps<'svg'>) {
+function PlusIcon(props: React.ComponentProps<"svg">) {
   return (
     <svg
       width="10"
@@ -81,7 +104,7 @@ function PlusIcon(props: React.ComponentProps<'svg'>) {
   );
 }
 
-function MinusIcon(props: React.ComponentProps<'svg'>) {
+function MinusIcon(props: React.ComponentProps<"svg">) {
   return (
     <svg
       width="10"

@@ -1,15 +1,13 @@
 // REACT Imports
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 // Logic imports
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 // Component Imports
-import CustomNumberField from '../../reusable/NumberField';
 import { Button } from '@mui/material';
+import { KeyPad } from './KeyPad';
 
-// type imports
-import cashRegisterNumberFormat from '../../../types/constants/cashRegisterNumberFormat.const';
 
 // Style Imports
 import styles from './ItemsList.module.scss';
@@ -22,7 +20,7 @@ export interface ICashCounterProps {
 
 export function ItemsList(props: ICashCounterProps) {
   // STATE Context
-  const [price, setPrice] = useState<number>(0);
+  const [totalPrice, setTotalPrice] = useState<number>(0);
   const [items, setItems] = useState<number[]>([]);
 
   // configure parent trigger response
@@ -32,54 +30,46 @@ export function ItemsList(props: ICashCounterProps) {
     }
   })
 
-
-  // Price input handler
-  function setPriceHandler(value: number | null, event: Event | undefined): void {
-    if (event && value) { setPrice(value); }
-    return;
-  }
+  let keypadTriggerValue = false;
+  const keyPadClear: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(keypadTriggerValue);
 
   // Add item to list handler
-  function addItem(): void {
-    setItems([...items, price]);
+  function addItem(item: number): void {
+    setItems([...items, item]);
     setTotalHandler();
   }
 
   // calculate and update total
   function setTotalHandler(): void {
     const newTotal = items.reduce((p: number, a: number) => parseInt((a += p).toFixed(2)), 0);
-    props.sendTotal(newTotal);
+    setTotalPrice(newTotal);
   }
 
   // clear item list entries
-  const clearList = () => { setItems([]) };
+  const clearList = () => { 
+    setItems([]) 
+    keypadTriggerValue = !keypadTriggerValue;
+    keyPadClear.next(keypadTriggerValue);
+    setTotalPrice(0);
+  };
 
   return (
     <>
-      <div id="purchase-container" className={styles.register}>
-        <div className="items-list">
+      <div className={`${styles.register} flex flex-col`}>
+      <div className={`flex flex-row`}>
+        <div className={`${styles["items-list"]}`}>
           <ul>
             {items.map((item) => (
               <li key={crypto.randomUUID()} >{item}</li>
             ))}
           </ul>
         </div>
-        <div id="price-display" className="purchase-controls">
-          <CustomNumberField
-            label={"Item Price"}
-            name={"itemPrice"}
-            fieldId={React.useId()}
-            changeHandler={setPriceHandler}
-            step={.01}
-            smallStep={.1}
-            largeStep={1}
-            format={cashRegisterNumberFormat}
-          /><p id="price-symbol">
-            Price: $<span id="price-value">{price}</span>
-          </p>
+        <div id="price-display" className={`${styles["purchase-controls"]}`}>{`$${totalPrice.toFixed(2)}`}
+        <KeyPad sendItem={(item: number) => addItem(item)} clear={keyPadClear}/>
         </div>
-        <div className="btn-panel">
-        <Button id="purchase-btn" variant="contained" onClick={addItem}>
+        </div>
+        <div className={`${styles["btn-panel"]}`}>
+        <Button id="purchase-btn" variant="contained" onClick={props.sendTotal}>
           Add Item
         </Button>
         <Button id="acknowledge-btn" variant="contained" onClick={clearList}>
