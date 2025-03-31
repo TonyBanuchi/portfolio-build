@@ -53,6 +53,10 @@ export function ItemsList(props: ICashCounterProps) {
     setTotalPrice(0);
   };
 
+  function sendTotalHandler():void {
+      props.sendTotal(totalPrice);
+  }
+
   return (
     <>
       <div className={`${styles.register} flex flex-col`}>
@@ -69,9 +73,9 @@ export function ItemsList(props: ICashCounterProps) {
         </div>
         </div>
         <div className={`${styles["btn-panel"]}`}>
-        <Button id="purchase-btn" variant="contained" onClick={props.sendTotal}>
+        <Button id="purchase-btn" variant="contained" onClick={sendTotalHandler}>
           Add Item
-        </Button>
+        </Button>*/
         <Button id="acknowledge-btn" variant="contained" onClick={clearList}>
           Clear
         </Button>
