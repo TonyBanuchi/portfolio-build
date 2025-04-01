@@ -1,6 +1,6 @@
 import * as React from "react";
 import { NumberField } from "@base-ui-components/react/number-field";
-import styles from "./NumberField.module.scss";
+import styles from "./UsCurrNumberField.module.scss";
 import { Observable } from "rxjs";
 import cashRegisterNumberFormat from "../../types/constants/cashRegisterNumberFormat.const";
 
