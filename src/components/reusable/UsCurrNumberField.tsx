@@ -4,7 +4,7 @@ import styles from "./NumberField.module.scss";
 import { Observable } from "rxjs";
 import cashRegisterNumberFormat from "../../types/constants/cashRegisterNumberFormat.const";
 
-type CustomNumberFieldProps = {
+type UsCurrNumberFieldProps = {
   label: string;
   name: string;
   fieldId: string;
@@ -15,7 +15,7 @@ type CustomNumberFieldProps = {
   clearTrigger: Observable<boolean>;
 };
 
-export default function CustomNumberField(props: CustomNumberFieldProps) {
+export default function UsCurrNumberField(props: UsCurrNumberFieldProps) {
   const [value, setValue] = React.useState(0);
 
   let clearState = false;

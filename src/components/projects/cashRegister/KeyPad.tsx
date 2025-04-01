@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 
 // Component Imports
-import CustomNumberField from "../../reusable/UsCurrNumberField";
+import UsCurrNumberField from "../../reusable/UsCurrNumberField";
 import { Button } from "@mui/material";
 
 // type imports
@@ -65,7 +65,7 @@ export function KeyPad(props: IKeyPadProps) {
     <>
       <div className={`flex flex-col ${styles["key-pad-container"]}`}>
         <div className={`${styles["price-entry-display"]}`}>
-          <CustomNumberField
+          <UsCurrNumberField
             label={"Item Price"}
             name={"itemPrice"}
             fieldId={React.useId()}

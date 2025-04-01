@@ -2,19 +2,18 @@
 import React, { useState } from "react";
 
 // logic imports
-import { Observable } from "rxjs";
+import { BehaviorSubject, Observable } from "rxjs";
 
 // type imports
 import { MoneyBreakdown } from "../../../types/classes/MoneyBreakdown.class";
 
 // component imports
-import CustomNumberField from "../../reusable/UsCurrNumberField";
 import { Button } from "@mui/material";
+import WholeNumberCurrField from "../../reusable/WholeNumberCurrField";
 
 //style imports
 import styles from "./CashCounter.module.scss";
 import featureStyles from "./CashRegister.module.scss";
-import standardWholeNumberFormat from "../../../types/constants/standardWholeNumberFormat.const";
 
 export interface ICashCounterProps {
   sendCashCount: (newCashCount: MoneyBreakdown) => void;
@@ -36,6 +35,15 @@ export function CashCounter(props: ICashCounterProps) {
   const [quarters, setQuarters] = useState<number>(0);
   const [cash, setCash] = useState<MoneyBreakdown>(new MoneyBreakdown());
 
+  
+  //configure child trigger
+  let clearTriggerValue = false;
+  const clearTrigger: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(clearTriggerValue);
+  function fireClearTrigger(): void {
+    clearTriggerValue = !clearTriggerValue;
+    clearTrigger.next(clearTriggerValue);
+  }
+
   // configure parent trigger response
   props.resetTrigger.subscribe((observer) => {
     if (observer) {
@@ -44,102 +52,22 @@ export function CashCounter(props: ICashCounterProps) {
   });
 
   // configure state handlers
-
-  function setPenniesHandler(
-    value: number | null,
-    event: Event | undefined
-  ): void {
-    if (event && value) {
-      setPennies(value);
+  function setDenominationHandler(denomination: string, value: number): void {
+    switch(denomination){
+      case 'penny': setPennies(value); break;
+      case 'nickel': setNickels(value); break;
+      case 'dime': setDimes(value); break;
+      case 'quarter': setQuarters(value); break;
+      case 'one': setOnes(value); break;
+      case 'five': setFives(value); break;
+      case 'ten': setTens(value); break;
+      case 'twenty': setTwenties(value); break;
+      case 'fifty': setFifties(value); break;
+      case 'hundred': setHundreds(value); break;
     }
     countCash();
   }
-
-  function setNickelsHandler(
-    value: number | null,
-    event: Event | undefined
-  ): void {
-    if (event && value) {
-      setNickels(value);
-    }
-    countCash();
-  }
-
-  function setDimesHandler(
-    value: number | null,
-    event: Event | undefined
-  ): void {
-    if (event && value) {
-      setDimes(value);
-    }
-    countCash();
-  }
-
-  function setQuartersHandler(
-    value: number | null,
-    event: Event | undefined
-  ): void {
-    if (event && value) {
-      setQuarters(value);
-    }
-    countCash();
-  }
-
-  function setOnesHandler(
-    value: number | null,
-    event: Event | undefined
-  ): void {
-    if (event && value) {
-      setOnes(value);
-    }
-    countCash();
-  }
-  function setFivesHandler(
-    value: number | null,
-    event: Event | undefined
-  ): void {
-    if (event && value) {
-      setFives(value);
-    }
-    countCash();
-  }
-  function setTensHandler(
-    value: number | null,
-    event: Event | undefined
-  ): void {
-    if (event && value) {
-      setTens(value);
-    }
-    countCash();
-  }
-  function setTwentiesHandler(
-    value: number | null,
-    event: Event | undefined
-  ): void {
-    if (event && value) {
-      setTwenties(value);
-    }
-    countCash();
-  }
-  function setFiftiesHandler(
-    value: number | null,
-    event: Event | undefined
-  ): void {
-    if (event && value) {
-      setFifties(value);
-    }
-    countCash();
-  }
-  function setHundredsHandler(
-    value: number | null,
-    event: Event | undefined
-  ): void {
-    if (event && value) {
-      setHundreds(value);
-    }
-    countCash();
-  }
-
+  
   function countCash(): void {
     const newCashCount: MoneyBreakdown = new MoneyBreakdown(
       pennies,
@@ -172,6 +100,8 @@ export function CashCounter(props: ICashCounterProps) {
     setTwenties(0);
     setFifties(0);
     setHundreds(0);
+    fireClearTrigger();
+
   }
 
   return (
@@ -182,113 +112,123 @@ export function CashCounter(props: ICashCounterProps) {
       >
         <div className={styles.coins}>
           <div className={styles["coin-col-one"]}>
-            <CustomNumberField
+            <WholeNumberCurrField
               label={"Pennies"}
               name={"pennies"}
               fieldId={React.useId()}
-              changeHandler={setPenniesHandler}
+              changeHandler={(outVal: number) => setDenominationHandler('penny', outVal)}
               step={1}
               smallStep={1}
               largeStep={10}
-              format={standardWholeNumberFormat}
+              clearTrigger={clearTrigger}
+              multiplier={cash.penny.valueMultiplier}
             />
-            <CustomNumberField
+            <WholeNumberCurrField
               label={"Nickels"}
               name={"nickels"}
               fieldId={React.useId()}
-              changeHandler={setNickelsHandler}
+              changeHandler={(outVal: number) => setDenominationHandler('nickel', outVal)}
               step={1}
               smallStep={1}
               largeStep={10}
-              format={standardWholeNumberFormat}
+              clearTrigger={clearTrigger}
+              multiplier={cash.nickel.valueMultiplier}
             />
           </div>
           <div className={styles["coin-col-two"]}>
-            <CustomNumberField
+            <WholeNumberCurrField
               label={"Dimes"}
               name={"dimes"}
               fieldId={React.useId()}
-              changeHandler={setDimesHandler}
+              changeHandler={(outVal: number) => setDenominationHandler('dime', outVal)}
               step={1}
               smallStep={1}
               largeStep={10}
-              format={standardWholeNumberFormat}
+              clearTrigger={clearTrigger}
+              multiplier={cash.dime.valueMultiplier}
             />
-            <CustomNumberField
+            <WholeNumberCurrField
               label={"Quarters"}
               name={"quarters"}
               fieldId={React.useId()}
-              changeHandler={setQuartersHandler}
+              changeHandler={(outVal: number) => setDenominationHandler('quarter', outVal)}
               step={1}
               smallStep={1}
               largeStep={10}
-              format={standardWholeNumberFormat}
+              clearTrigger={clearTrigger}
+              multiplier={cash.quarter.valueMultiplier}
             />
           </div>
         </div>
         <div className={styles.bills}>
           <div className={styles["bill-col-one"]}>
-            <CustomNumberField
+            <WholeNumberCurrField
               label={"Ones"}
               name={"ones"}
               fieldId={React.useId()}
-              changeHandler={setOnesHandler}
+              changeHandler={(outVal: number) => setDenominationHandler('one', outVal)}
               step={1}
               smallStep={1}
               largeStep={10}
-              format={standardWholeNumberFormat}
+              clearTrigger={clearTrigger}
+              multiplier={cash.one.valueMultiplier}
             />
-            <CustomNumberField
+            <WholeNumberCurrField
               label={"Fives"}
               name={"fives"}
               fieldId={React.useId()}
-              changeHandler={setFivesHandler}
+              changeHandler={(outVal: number) => setDenominationHandler('five', outVal)}
               step={1}
               smallStep={1}
               largeStep={10}
-              format={standardWholeNumberFormat}
+              clearTrigger={clearTrigger}
+              multiplier={cash.five.valueMultiplier}
             />
-            <CustomNumberField
+            <WholeNumberCurrField
               label={"Tens"}
               name={"tens"}
               fieldId={React.useId()}
-              changeHandler={setTensHandler}
+              changeHandler={(outVal: number) => setDenominationHandler('ten', outVal)}
               step={1}
               smallStep={1}
               largeStep={10}
-              format={standardWholeNumberFormat}
+              clearTrigger={clearTrigger}
+              multiplier={cash.ten.valueMultiplier}
             />
           </div>
           <div className={styles["bill-col-two"]}>
-            <CustomNumberField
+            <WholeNumberCurrField
               label={"Twenties"}
               name={"twenties"}
               fieldId={React.useId()}
-              changeHandler={setTwentiesHandler}
+              changeHandler={(outVal: number) => setDenominationHandler('twenty', outVal)}
               step={1}
               smallStep={1}
               largeStep={10}
-              format={standardWholeNumberFormat}
+              clearTrigger={clearTrigger}
+              multiplier={cash.twenty.valueMultiplier}
             />
-            <CustomNumberField
+            <WholeNumberCurrField
               label={"Fifties"}
               name={"fifties"}
               fieldId={React.useId()}
-              changeHandler={setFiftiesHandler}
+              changeHandler={(outVal: number) => setDenominationHandler('fifty', outVal)}
               step={1}
               smallStep={1}
               largeStep={10}
-              format={standardWholeNumberFormat}
+              clearTrigger={clearTrigger}
+              multiplier={cash.fifty.valueMultiplier}
             />
-            <CustomNumberField
+            <WholeNumberCurrField
               label={"One Hundreds"}
               name={"hundreds"}
               fieldId={React.useId()}
-              changeHandler={setHundredsHandler}
+              changeHandler={(outVal: number) => setDenominationHandler('hundred', outVal)}
               step={1}
               smallStep={1}
               largeStep={10}
-              format={standardWholeNumberFormat}
+              clearTrigger={clearTrigger}
+              multiplier={cash["hundred"].valueMultiplier}
             />
           </div>
         </div>
