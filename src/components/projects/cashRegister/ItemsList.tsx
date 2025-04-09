@@ -75,7 +75,7 @@ export function ItemsList(props: ICashCounterProps) {
         <div className={`${styles["btn-panel"]}`}>
         <Button id="purchase-btn" variant="contained" onClick={sendTotalHandler}>
           Add Item
-        </Button>*/
+        </Button>
         <Button id="acknowledge-btn" variant="contained" onClick={clearList}>
           Clear
         </Button>

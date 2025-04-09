@@ -1,5 +1,5 @@
 // REACT Imports
-import React, { useState } from "react";
+import React, { ChangeEvent, ChangeEventHandler, useState } from "react";
 
 // Component Imports
 import UsCurrNumberField from "../../reusable/UsCurrNumberField";
@@ -50,6 +50,13 @@ export function KeyPad(props: IKeyPadProps) {
     clearTrigger.next(clearTriggerValue);
   }
 
+  const incrementValue = () => {setPrice(price+.01);};
+  const decrementValue = () => {setPrice(price-.01);};
+
+  const handlePriceChange: ChangeEventHandler<HTMLInputElement> = (event: ChangeEvent<HTMLInputElement>) => {
+    setPrice(Number(event.target.value));
+  }
+
   function keyPadHandler(key: number): void {
     let newValue = price.toFixed(2);
     newValue = newValue.replace(".", "");
@@ -61,11 +68,8 @@ export function KeyPad(props: IKeyPadProps) {
     setPrice(Number(newValue));
   }
 
-  return (
-    <>
-      <div className={`flex flex-col ${styles["key-pad-container"]}`}>
-        <div className={`${styles["price-entry-display"]}`}>
-          <UsCurrNumberField
+  /*
+<UsCurrNumberField
             label={"Item Price"}
             name={"itemPrice"}
             fieldId={React.useId()}
@@ -74,7 +78,16 @@ export function KeyPad(props: IKeyPadProps) {
             smallStep={0.1}
             largeStep={1}
             clearTrigger={clearTrigger}
+            value={price}
           />
+  */
+  return (
+    <>
+      <div className={`flex flex-col ${styles["key-pad-container"]}`}>
+        <div className={`${styles["price-entry-display"]} flex flex-row`}>
+        <Button id="decrement" variant="contained" onClick={decrementValue}>-</Button>
+        <input type="number" value={price} onChange={handlePriceChange} min={0} />
+        <Button id="increment" variant="contained" onClick={incrementValue}>+</Button>
         </div>
         <div className={`flex flex-row ${styles["key-pad"]}`}>
           <div className={`flex flex-col ${styles["key-pad-left"]}`}>
@@ -91,33 +104,35 @@ export function KeyPad(props: IKeyPadProps) {
               Clear
             </Button>
           </div>
-          <div className={`flex flex-col ${styles["key-pad-center"]}`}></div>
-          <Button id="8" variant="contained" onClick={() => keyPadHandler(8)}>
-            8
-          </Button>
-          <Button id="5" variant="contained" onClick={() => keyPadHandler(5)}>
-            5
-          </Button>
-          <Button id="2" variant="contained" onClick={() => keyPadHandler(2)}>
-            2
-          </Button>
-          <Button id="0" variant="contained" onClick={() => keyPadHandler(0)}>
-            0
-          </Button>
-          <div className={`flex flex-col ${styles["key-pad-right"]}`}></div>
+          <div className={`flex flex-col ${styles["key-pad-center"]}`}>
+            <Button id="8" variant="contained" onClick={() => keyPadHandler(8)}>
+              8
+            </Button>
+            <Button id="5" variant="contained" onClick={() => keyPadHandler(5)}>
+              5
+            </Button>
+            <Button id="2" variant="contained" onClick={() => keyPadHandler(2)}>
+              2
+            </Button>
+            <Button id="0" variant="contained" onClick={() => keyPadHandler(0)}>
+              0
+            </Button>
+          </div>
+          <div className={`flex flex-col ${styles["key-pad-right"]}`}>
+            <Button id="9" variant="contained" onClick={() => keyPadHandler(9)}>
+              9
+            </Button>
+            <Button id="6" variant="contained" onClick={() => keyPadHandler(6)}>
+              6
+            </Button>
+            <Button id="3" variant="contained" onClick={() => keyPadHandler(3)}>
+              3
+            </Button>
+            <Button id="add" variant="contained" onClick={addItem}>
+              Add
+            </Button>
+          </div>
         </div>
-        <Button id="9" variant="contained" onClick={() => keyPadHandler(9)}>
-          9
-        </Button>
-        <Button id="6" variant="contained" onClick={() => keyPadHandler(6)}>
-          6
-        </Button>
-        <Button id="3" variant="contained" onClick={() => keyPadHandler(3)}>
-          3
-        </Button>
-        <Button id="add" variant="contained" onClick={addItem}>
-          Add
-        </Button>
         <div className={`flex flex-row ${styles["key-pad-actions"]}`}></div>
       </div>
     </>

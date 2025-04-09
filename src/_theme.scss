@@ -1,0 +1,24 @@
+// Primary Colors
+$primary-dark-blue: #123139;
+$primary-lighter-blue: #1E4D5A;
+$primary-deepest-blue: #0B1F24;
+
+// Accent Colors
+$accent-teal: #2A9D8F;
+$accent-gold: #E9C46A;
+
+// Neutral Tones
+$neutral-warm-gray: #EBEBEB;
+$neutral-off-white: #F8F8F8;
+$neutral-dark-gray: #333333;
+
+// Text Colors
+$text-primary: #FFFFFF;
+$text-secondary: #EBEBEB;
+$text-dark: #333333;
+
+// Functional Colors
+$cta-color: $accent-gold;
+$link-color: $accent-teal;
+$border-color: rgba(255, 255, 255, 0.1);
+$hover-overlay: rgba(18, 49, 57, 0.8);  // Based on primary-dark-blue but with opacity

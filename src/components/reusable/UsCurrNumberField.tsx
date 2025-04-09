@@ -8,11 +8,12 @@ type UsCurrNumberFieldProps = {
   label: string;
   name: string;
   fieldId: string;
-  changeHandler: (value: number) => void;
+  changeHandler: (value: number, event: Event) => void;
   step: number;
   smallStep: number;
   largeStep: number;
   clearTrigger: Observable<boolean>;
+  value: number;
 };
 
 export default function UsCurrNumberField(props: UsCurrNumberFieldProps) {
@@ -32,7 +33,7 @@ export default function UsCurrNumberField(props: UsCurrNumberFieldProps) {
   ): void {
     if (value && event) {
       setValue(value);
-      props.changeHandler(value);
+      props.changeHandler(value, event);
     }
     return;
   }
